@@ -17,7 +17,7 @@
               <div class="p-3">
                 <h5 class="item-name">{{ item.name }}</h5>
                 <h6 class="item-price">{{ item.price }} Lei</h6>
-                <button type="button" class="add-cart">Adauga in cos</button>
+                <button @click="addPizza(item.id)" type="button" class="add-cart">Adauga in cos</button>
               </div>
             </div>
           </div>
@@ -36,8 +36,9 @@
               </h5>
 
               <p>
-                <button type="button" class="add">+</button>
-                <button type="button" class="remove">-</button>
+                <button @click="plusPizza(item.id)" type="button" class="add">+</button>
+                <span class="mx-2">{{ item.quantity }}</span>
+                <button @click="reducePizza(item.id)" type="button" class="remove">-</button>
               </p>
 
               <div class="order-item-details">
@@ -46,7 +47,7 @@
                 </spam>
               </div>
             </div>
-            <button type = "button" clas="remove-item">X</button>
+            <button @click="removePizza(item.id)" type = "button" class="remove-icon">X</button>
           </div>
         </div>
         <div class="cart-empty" v-else>
@@ -54,7 +55,7 @@
         </div>
         <div class="total-section">
           <h6 class="total-title">Total:</h6>
-          <span class="amount">0 Lei</span>
+          <span class="amount">{{getTotal()}} Lei</span>
         </div>
       </div>
     </div>
@@ -79,8 +80,47 @@ const cart = ref([
 ]);
 
 const addPizza = (item) => {
-  const pizza = menu.find(p => p.id === item.id);
-  console.log(pizza);
+  const pizza = menu.value.find(p => p.id === item);
+  const index = cart.value.findIndex((p) => p.id === item);
+  if(index !== -1) {
+    cart.value[index].quantity += 1;
+  } else {
+    cart.value.push({...pizza,quantity: 1});
+  }
+
+};
+
+const getTotal = () => {
+  return cart.value.reduce((total, item) => total + item.price * item.quantity, 0);
+};
+
+const reducePizza = (item) => {
+  const index = cart.value.findIndex((p) => p.id === item);
+  if(index !== -1) {
+    if(cart.value[index].quantity > 1) {
+      cart.value[index].quantity -= 1;
+    } else {
+      cart.value.splice(index, 1);
+    }
+  }
+};
+
+const plusPizza = (item) => {
+  const pizza = menu.value.find(p => p.id === item);
+  const index = cart.value.findIndex((p) => p.id === item);
+  if(index !== -1) {
+    cart.value[index].quantity += 1;
+  } else {
+    cart.value.push({...pizza,quantity: 1});
+  }
+
+};
+
+const removePizza = (item) => {
+  const index = cart.value.findIndex((p) => p.id === item);
+  if(index !== -1) {
+    cart.value.splice(index, 1);
+  }
 };
 
 </script>
