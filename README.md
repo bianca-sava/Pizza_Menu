@@ -1,38 +1,27 @@
-# pizza
+# 🍕 Papa's Pizzeria - My First Vue.js Project
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple, interactive pizza menu application built with **Vue 3** and **Vite**. This project was created as a learning exercise to understand the fundamentals of modern frontend development, reactivity, and state management.
 
-## Recommended IDE Setup
+##  Preview
+![App Screenshot](./img.png)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+##  Features
+- **Dynamic Menu**: Pizza items are rendered dynamically from a data array.
+- **Reactive Shopping Cart**:
+  - Add items to the basket.
+  - Increase or decrease quantities directly in the cart.
+  - Remove specific items or clear the cart.
+  - Automatic total price calculation.
+- **Conditional Rendering**: Displays a "Cart is empty" message when no items are selected.
 
-## Recommended Browser Setup
+## ️ Tech Stack
+- **Framework**: [Vue.js 3](https://vuejs.org/) 
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: Bootstrap 5 (via CDN) and Custom CSS
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+##  What I Learned
+- **Reactivity with `ref()`**: Managing state in Vue components.
+- **Directives**: Using `v-for` for lists and `v-if`/`v-else` for conditional UI elements.
+- **Event Handling**: Linking buttons to JavaScript functions using `@click`.
+- **Array Methods**: Using `.find()`, `.findIndex()`, `.push()`, `.splice()`, and `.reduce()` to manage cart data.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
